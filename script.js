@@ -37,3 +37,39 @@ document.getElementById("size").onclick = () => {
         alert("Invalid number!\n\nChoose a number between 1 and 100")
     }
 }
+  
+
+function getRandomRGB() {
+  function getRandomInteger(min, max) {
+    let number = Math.floor(Math.random() * (max - min + 1)) + min;
+    return number;
+}
+
+const r = getRandomInteger(0, 255);
+const g = getRandomInteger(0, 255);
+const b = getRandomInteger(0, 255);
+
+const rgb = `rgb(${[r,g,b].join(',')})`;
+
+return rgb;
+}
+
+
+document.getElementById("rgb").onclick = () => {
+    const row = document.querySelectorAll(".row");
+
+    row.forEach(function(mySquare){
+        mySquare.addEventListener("mouseenter", function(e) {
+            e.target.style.backgroundColor = getRandomRGB();
+        })
+    })
+} 
+
+
+document.getElementById("reset").onclick = () => {
+    const row = document.querySelectorAll(".row");
+
+    row.forEach(function(mySquare) {
+        mySquare.style.backgroundColor = "";
+    })
+}
